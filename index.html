@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kerollos AbdulMasih - Backend & Data Engineer</title>
+
+  <link rel="icon" sizes="180x180" href="/images/android-chrome-512x512zzzzzzzzzzz.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class", // Enable class-based dark mode
+      theme: {
+        extend: {
+          colors: {
+            /* Dark Mode (Default) */
+            "primary-dark": "#121212",
+            "secondary-dark": "#1e1e1e",
+            "text-light": "#e0e0e0",
+            "text-muted": "#b0b0b0",
+
+            /* Light Mode Variables */
+            "primary-light": "#ffffff",
+            "secondary-light": "#f0f0f0",
+            "text-dark": "#333333",
+            "text-neutral": "#555555",
+
+            /* Common Accent Color */
+            "accent-blue": "#3b82f6", // Tailwind blue-500
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+          },
+        },
+      },
+    };
+  </script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-primary-dark text-text-light font-sans antialiased transition-colors duration-500">
+  <header id="navbar"
+    class="fixed top-0 left-0 right-0 z-50 bg-secondary-dark/95 backdrop-blur-sm shadow-lg transition-all duration-500">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+      <a href="#kero"
+        class="text-2xl font-bold text-accent-blue hover:text-white transition duration-300  animate-pulse">Kerollos.dev</a>
+
+      <div class="hidden md:flex space-x-6 items-center">
+        <a href="#about" class="nav-link text-text-light hover:text-accent-blue transition duration-300">About</a>
+        <a href="#skills" class="nav-link text-text-light hover:text-accent-blue transition duration-300">Skills</a>
+        <a href="#projects" class="nav-link text-text-light hover:text-accent-blue transition duration-300">Projects</a>
+        <a href="#education"
+          class="nav-link text-text-light hover:text-accent-blue transition duration-300">Experience</a>
+        <a href="#contact"
+          class="nav-link px-4 py-1 border border-accent-blue rounded-full text-accent-blue hover:bg-accent-blue hover:text-white transition duration-300">Contact</a>
+
+
+        <button id="theme-toggle" aria-label="Toggle theme"
+          class="p-2 text-text-light hover:text-accent-blue rounded-full transition duration-300">
+          <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-sun hidden">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2" />
+            <path d="M12 20v2" />
+            <path d="m4.93 4.93 1.41 1.41" />
+            <path d="m17.66 17.66 1.41 1.41" />
+            <path d="M2 12h2" />
+            <path d="M20 12h2" />
+            <path d="m6.34 17.66-1.41 1.41" />
+            <path d="m19.07 4.93-1.41 1.41" />
+          </svg>
+          <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-moon">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="md:hidden flex items-center space-x-3">
+        <button id="theme-toggle-mobile" aria-label="Toggle theme"
+          class="p-2 text-text-light hover:text-accent-blue rounded-full transition duration-300">
+          <svg id="sun-icon-mobile" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-sun hidden">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2" />
+            <path d="M12 20v2" />
+            <path d="m4.93 4.93 1.41 1.41" />
+            <path d="m17.66 17.66 1.41 1.41" />
+            <path d="M2 12h2" />
+            <path d="M20 12h2" />
+            <path d="m6.34 17.66-1.41 1.41" />
+            <path d="m19.07 4.93-1.41 1.41" />
+          </svg>
+          <svg id="moon-icon-mobile" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-moon">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
+        </button>
+        <button id="mobile-menu-button"
+          class="p-2 text-text-light hover:text-accent-blue rounded-lg transition duration-300">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-menu">
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-secondary-dark p-4 border-t border-text-muted/10">
+      <a href="#about" class="block py-2 text-text-light hover:text-accent-blue transition duration-300"
+        onclick="closeMobileMenu()">About</a>
+      <a href="#skills" class="block py-2 text-text-light hover:text-accent-blue transition duration-300"
+        onclick="closeMobileMenu()">Skills</a>
+      <a href="#projects" class="block py-2 text-text-light hover:text-accent-blue transition duration-300"
+        onclick="closeMobileMenu()">Projects</a>
+      <a href="#education" class="block py-2 text-text-light hover:text-accent-blue transition duration-300"
+        onclick="closeMobileMenu()">Experience</a>
+      <a href="#contact" class="block py-2 text-accent-blue hover:text-white transition duration-300"
+        onclick="closeMobileMenu()">Contact</a>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto pt-16">
+    <section id="kero"
+      class="min-h-[calc(100vh-64px)] flex items-center justify-center text-center px-4 sm:px-6 lg:px-8 py-16">
+      <div class="space-y-6">
+        <div class="mb-8 flex justify-center">
+          <img id="profile-photo"
+            src="https://media.licdn.com/dms/image/v2/D4D03AQEV0xa6fH0-fQ/profile-displayphoto-crop_800_800/B4DZl.fp7MJIAI-/0/1758763861500?e=1762387200&v=beta&t=___miUsarP0zHgiHCMexWDdm_zo9z32NScwHpy6jZys"
+            alt="Kerollos AbdulMasih Profile"
+            onerror="this.onerror=null;this.src='https://placehold.co/150x150/1e1e1e/b0b0b0?text=Kerollos';"
+            class="w-40 h-40 rounded-full object-cover border-4 border-accent-blue shadow-lg transition duration-500 hover:scale-105" />
+        </div>
+        <p class="text-lg text-accent-blue font-medium uppercase tracking-widest animate-pulse">
+          Hello, I'm Kerollos AbdulMasih
+        </p>
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight">
+          <span class="block text-white transition-colors duration-500">Backend & Data Engineer</span>
+          <span class="block text-text-muted text-4xl sm:text-5xl lg:text-6xl mt-2">(Node.js | Python | SQL)</span>
+        </h1>
+        <p class="text-xl max-w-3xl mx-auto text-text-muted leading-relaxed">
+          Certified <strong>Data Engineer</strong> with a strong foundation in
+          <strong>Node.js </strong>, <strong>SQL</strong>, and
+          <strong>Python</strong>.<br />I specialize in designing and building
+          <strong>RESTful APIs</strong> and developing
+          <strong>scalable ETL pipelines</strong> that power data analytics
+          and machine learning solutions.
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 pt-6">
+          <a href="#projects"
+            class="bg-accent-blue hover:bg-blue-600 text-white font-semibold py-3 px-6  rounded-full shadow-lg transform hover:scale-[1.02] transition duration-300 inline-flex items-center gap-1">
+            <span>View My Projects</span>
+            <!-- Use same visual source/style as the GitHub icon (filled + currentColor) -->
+           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" aria-hidden="true"><path d="m9 18 6-6-6-6"></path></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/kerolloss/" target="_blank" rel="noopener noreferrer"
+            class="bg-secondary-dark border border-accent-blue text-accent-blue hover:bg-accent-blue hover:text-white font-semibold py-3 px-6 rounded-full shadow-lg transform hover:scale-[1.02] transition duration-300 transition-colors duration-500">
+            Connect on LinkedIn
+          </a>
+          <a href="./Kerollos Resume.pdf" target="_blank" rel="noopener noreferrer"
+            class="bg-secondary-dark border border-accent-blue text-accent-blue hover:bg-accent-blue hover:text-white font-semibold py-3 px-6 rounded-full shadow-lg transform hover:scale-[1.02] transition duration-300 transition-colors duration-300 inline-flex items-center gap-1"
+            download>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-download mr-2 h-5 w-5 group-hover:translate-y-1 transition-transform" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
+            <span>Download My CV</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="relative py-20 px-4 sm:px-6 lg:px-8 my-12 transition-all duration-500
+         bg-secondary-dark/50 rounded-3xl max-w-7xl mx-auto
+         hover:bg-gradient-to-br from-secondary-dark/50 via-accent-blue/10 to-secondary-dark/50
+         hover:shadow-2xl hover:-translate-y-1">
+      <h2 class="text-4xl font-bold text-center mb-12 text-white transition-colors duration-500">
+        About Me
+      </h2>
+      <div class="max-w-4xl mx-auto space-y-6 text-lg text-text-muted">
+        <p>
+          I’m
+          <span class="font-semibold text-white">Kerollos AbdulMasih</span>, a
+          passionate
+          <span class="font-semibold text-white">Backend & Data Engineer</span>
+          and a graduate of the
+          <span class="font-semibold text-white">Faculty of Computers and Artificial Intelligence, University of
+            Sadat City</span>.
+        </p>
+        <p>
+          With a strong foundation in
+          <span class="font-semibold text-white">software engineering</span>
+          and <span class="font-semibold text-white">data analytics</span>, I
+          specialize in building data-driven and scalable backend systems. My
+          journey combines academic knowledge, hands-on projects, and
+          professional certifications, enabling me to bridge the gap between
+          <span class="font-semibold text-white">data engineering</span> and
+          <span class="font-semibold text-white">backend development</span>.
+        </p>
+        <p>
+          My experience includes developing
+          <span class="font-semibold text-white">Python</span> scripts for
+          data preprocessing and automation, building
+          <span class="font-semibold text-white">ETL pipelines</span> during
+          internships, and designing functional
+          <span class="font-semibold text-white">RESTful APIs</span> using
+          <span class="font-semibold text-white">Node.js (Express.js)</span>
+          with <span class="font-semibold text-white">MySQL</span> and
+          <span class="font-semibold text-white">PostgreSQL</span>. I’m driven
+          by the challenge of creating systems that are scalable, efficient,
+          and cleanly designed.
+        </p>
+        <p>
+          I hold certifications such as
+          <span class="font-semibold text-white">Associate Data Engineer (DataCamp)</span>
+          and
+          <span class="font-semibold text-white">AWS Cloud Foundations</span>,
+          reflecting my commitment to applying best practices in data
+          modeling, cloud technologies, and backend architecture.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills" class="relative py-20 px-4 sm:px-6 lg:px-8 my-12 transition-all duration-500
+         bg-secondary-dark/50 rounded-3xl max-w-7xl mx-auto
+         hover:bg-gradient-to-br from-secondary-dark/50 via-accent-blue/10 to-secondary-dark/50
+         hover:shadow-2xl hover:-translate-y-1">
+      <h2 class="text-4xl font-bold text-center mb-12 text-white transition-colors duration-500">
+        Technical Toolkit
+      </h2>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-10 max-w-6xl mx-auto justify-center items-center">
+        <div
+          class="bg-secondary-dark p-6 rounded-xl shadow-xl transition duration-300 hover:-translate-y-2  hover:shadow-accent-blue/25 transition-colors duration-500">
+          <h3 class="text-2xl font-semibold mb-6 text-accent-blue flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-server-cog mr-3">
+              <rect width="20" height="8" x="2" y="2" rx="2" ry="2" />
+              <rect width="20" height="8" x="2" y="14" rx="2" ry="2" />
+              <path d="M12 18h.01" />
+              <path d="M17.5 22c.69 0 1.25-.56 1.25-1.25s-.56-1.25-1.25-1.25-1.25.56-1.25 1.25.56 1.25 1.25 1.25Z" />
+              <path d="M17.5 2.5v1.5" />
+              <path d="M17.5 8v-1.5" />
+              <path d="M14.88 3.3l-.96.96" />
+              <path d="M19.12 6.7l-.96-.96" />
+              <path d="M14.88 6.7l-.96-.96" />
+              <path d="M19.12 3.3l-.96.96" />
+            </svg>
+            Backend Development
+          </h3>
+          <div id="backend-skills" class="space-y-4"></div>
+        </div>
+
+        <div
+          class="bg-secondary-dark p-6 rounded-xl shadow-xl transition duration-300 hover:-translate-y-2  hover:shadow-accent-blue/25 transition-colors duration-500">
+          <h3 class="text-2xl font-semibold mb-6 text-accent-blue flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-database-zap mr-3">
+              <path d="M12 2v2" />
+              <path d="M6.34 6.34l1.42 1.42" />
+              <path d="M3 10h2" />
+              <path d="M18.66 6.34l-1.42 1.42" />
+              <path d="M17 10h4" />
+              <path d="M12 22s8-3 8-10H4s8 3 8 10Z" />
+              <path d="M12 10a4 4 0 0 1-4 4" />
+            </svg>
+            Data Engineering
+          </h3>
+          <div id="data-skills" class="space-y-4"></div>
+        </div>
+
+        <div
+          class="bg-secondary-dark p-6 rounded-xl shadow-xl transition duration-300 hover:-translate-y-2  hover:shadow-accent-blue/25 transition-colors duration-500 ">
+          <h3 class="text-2xl font-semibold mb-6 text-accent-blue flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-cloud mr-3">
+              <path
+                d="M17.5 19H17a4.5 4.5 0 1 0-8.8-1.28c-.37.31-.76.65-1.15.99C6.4 19.46 5.5 20 4 20a4 4 0 0 1 0-8h1.22" />
+              <path d="M22 10a4 4 0 0 0-4-4h-2.17c-.36-1.1-1.28-2-2.3-2-.76 0-1.4.3-1.8.8" />
+            </svg>
+            Cloud & Tools
+          </h3>
+          <div id="cloud-skills" class="space-y-4 max-w-3xl mx-auto"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="relative py-20 px-4 sm:px-6 lg:px-8 my-12 transition-all duration-500
+         bg-secondary-dark/50 rounded-3xl max-w-7xl mx-auto
+         hover:bg-gradient-to-br from-secondary-dark/50 via-accent-blue/10 to-secondary-dark/50
+         hover:shadow-2xl hover:-translate-y-1">
+      <h2 class="text-4xl font-bold text-center mb-12 text-white transition-colors duration-500">
+        Featured Projects
+      </h2>
+
+      <div id="projects-container" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- project cards here -->
+      </div>
+    </section>
+
+
+    <section id="education" class="py-20 px-4 sm:px-6 lg:px-8">
+      <h2 class="text-4xl font-bold text-center mb-12 text-white transition-colors duration-500">
+        Experience & Education
+      </h2>
+
+      <div class="max-w-4xl mx-auto space-y-16">
+        <div>
+          <h3 class="text-3xl font-semibold mb-6 border-b border-text-muted/20 pb-2">
+            <span class="text-accent-blue">Education &</span>
+            <span class="text-gray-400 dark:text-gray-300"> Certifications</span>
+          </h3>
+          <div class="space-y-8">
+            <div
+              class="bg-secondary-dark p-6 rounded-xl shadow-xl transition duration-300 hover:-translate-y-2  hover:shadow-accent-blue/25 transition-colors duration-500  border-accent-blue border-l-4">
+              <p class="text-sm font-medium text-text-muted mb-1">
+                10/2020 - 06/2024 | Sadat City, Egypt
+              </p>
+              <h4 class="text-xl font-bold text-white">
+                Faculty of Computers and Artificial Intelligence
+              </h4>
+              <p class="text-lg text-text-light">University of Sadat City</p>
+              <p class="text-md text-text-muted mt-1">GPA: 3.15</p>
+            </div>
+            <div
+              class="bg-secondary-dark p-6 rounded-xl shadow-xl transition duration-300 hover:-translate-y-2  hover:shadow-gray-700/50 transition-colors duration-500  border-l-4 border-text-muted ">
+              <p class="text-sm font-medium text-text-muted mb-1 ">
+              <p class="text-sm font-medium text-text-muted mb-1">2024</p>
+              <h4 class="text-xl font-bold text-white">
+                Certified as an Associate Data Engineer
+              </h4>
+              <p class="text-lg text-text-light">DataCamp</p>
+            </div>
+            <div
+              class="bg-secondary-dark p-6 rounded-xl shadow-xl transition duration-300 hover:-translate-y-2  hover:shadow-gray-700/50 transition-colors duration-500  border-l-4 border-text-muted">
+              <p class="text-sm font-medium text-text-muted mb-1">AWS</p>
+              <h4 class="text-xl font-bold text-white">
+                AWS Cloud Foundations Certified
+              </h4>
+              <p class="text-lg text-text-light">AWS</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-3xl font-semibold mb-6 text-accent-blue border-b border-text-muted/20 pb-2">
+            Internships
+          </h3>
+          <div class="space-y-8">
+            <div
+              class="bg-secondary-dark p-6 rounded-xl shadow-xl transition duration-300 hover:-translate-y-2  hover:shadow-accent-blue/25 transition-colors duration-500  border-accent-blue border-l-4">
+              <p class="text-sm font-medium text-text-muted mb-1">
+                08/2023 - 09/2023
+              </p>
+              <h4 class="text-xl font-bold text-white">
+                Data Science Intern
+              </h4>
+              <p class="text-lg text-text-light">CodeClause</p>
+              <ul class="list-disc list-inside text-text-muted mt-3 space-y-1">
+                <li>
+                  Developed **Python scripts** for data preprocessing and
+                  cleaning.
+                </li>
+                <li>
+                  Built small-scale **ETL pipelines** to automate data
+                  handling.
+                </li>
+                <li>
+                  Collaborated with the team to optimize backend workflows.
+                </li>
+              </ul>
+            </div>
+            <div
+              class="bg-secondary-dark p-6 rounded-xl shadow-xl transition duration-300 hover:-translate-y-2  hover:shadow-accent-blue/25 transition-colors duration-500  border-accent-blue border-l-4">
+              <p class="text-sm font-medium text-text-muted mb-1">
+                08/2023 - 09/2023
+              </p>
+              <h4 class="text-xl font-bold text-white">
+                Data Science Intern
+              </h4>
+              <p class="text-lg text-text-light">CodSoft</p>
+              <ul class="list-disc list-inside text-text-muted mt-3 space-y-1">
+                <li>
+                  Applied data preprocessing techniques to real-world
+                  datasets.
+                </li>
+                <li>
+                  Assisted in exploratory data analysis and feature
+                  engineering.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="relative py-20 px-4 sm:px-6 lg:px-8 my-12 transition-all duration-500
+         bg-secondary-dark/50 rounded-3xl max-w-7xl mx-auto
+         hover:bg-gradient-to-br from-secondary-dark/50 via-accent-blue/10 to-secondary-dark/50
+         hover:shadow-2xl hover:-translate-y-1">
+      <h2 class="text-4xl font-bold text-center mb-4 text-white transition-colors duration-500">
+        Get In Touch
+      </h2>
+      <p class="text-xl text-text-muted max-w-2xl mx-auto mb-10">
+        I am always open to discussing new projects, collaboration
+        opportunities, and backend or data challenges. Feel free to reach out!
+      </p>
+
+      <div class="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-8">
+        <div class="flex flex-col items-center">
+          <a href="mailto:kerollloss@gmail.com" class="text-accent-blue hover:text-white transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-mail">
+              <rect width="20" height="16" x="2" y="4" rx="2" />
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+            </svg>
+          </a>
+          <p class="mt-2 text-md text-text-muted">kerollloss@gmail.com</p>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <a href="https://www.linkedin.com/in/kerolloss/" target="_blank" rel="noopener noreferrer"
+            class="text-accent-blue hover:text-white transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-linkedin">
+              <path d="M16 8a6 6 0 0 0-6 6v7h4v-7a2 2 0 0 1 2-2 2 2 0 0 1 2 2v7h4v-7a6 6 0 0 0-6-6z" />
+              <rect width="4" height="12" x="2" y="9" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+          </a>
+          <p class="mt-2 text-md text-text-muted">Kerollos Abdo</p>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <a href="tel:+201208988956" class="text-accent-blue hover:text-white transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-phone">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.08 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+          </a>
+          <p class="mt-2 text-md text-text-muted">+20 1208988956</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-secondary-dark/80 mt-12 py-8 text-center text-text-muted text-sm transition-colors duration-500">
+    <p>
+      &copy; <span id="current-year"></span> Kerollos AbdulMasih. Built with
+      HTML, Tailwind CSS, and JavaScript.
+    </p>
+
+  </footer>
+  <button id="scrollTop"><i class="fa-solid fa-arrow-up"></i></button>
+  <script src="script.js"></script>
+</body>
+
+</html>
